@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSON to CSV - Convert JSON Objects to Spreadsheet-Ready CSV</title>
+    <meta name="description" content="JSON to CSV transforms JSON arrays or objects into clean CSV columns for spreadsheet imports and exports in your browser.">
+  <link rel="canonical" href="https://csvvieweronline.github.io/json-to-csv/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JSON to CSV - Convert JSON Objects to Spreadsheet-Ready CSV">
+    <meta property="og:description" content="JSON to CSV transforms JSON arrays or objects into clean CSV columns for spreadsheet imports and exports in your browser.">
+  <meta property="og:url" content="https://csvvieweronline.github.io/json-to-csv/">
+  <meta property="og:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script defer src="/assets/js/main.js"></script>
+  <script defer src="/assets/js/tools.js"></script>
+</head>
+<body data-tool="json-to-csv">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <span class="brand-badge">CV</span>
+        <span>CSVViewerOnline</span>
+      </a>
+      <nav class="site-nav" data-site-nav>
+        <a href="/">Home</a>
+        <a href="/csv-viewer-online/">CSV Viewer</a>
+        <a href="/csv-editor-online/">CSV Editor</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">T</button>
+        <button class="menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">M</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container fade-up">
+      <section class="hero">
+        <h1>JSON to CSV</h1>
+        <p>Transform structured JSON into spreadsheet-ready CSV for imports, reporting, and operational handoffs. This page is dedicated to reverse conversion, not JSON editing.</p>
+        <p class="trust-line">Built for import-ready outputs from JSON objects and arrays.</p>
+
+        <article class="tool-shell" aria-label="JSON to CSV converter">
+          <div class="tool-shell-head">
+            <h2>Convert JSON to CSV for spreadsheets and imports</h2>
+            <span class="privacy-pill">Built for import-ready exports</span>
+          </div>
+          <div class="tool-body split">
+            <div>
+              <div class="tool-tabs" data-tabset>
+                <button type="button" class="tool-tab" data-tab-target="j2cUploadPanel" aria-selected="true">Upload JSON</button>
+                <button type="button" class="tool-tab" data-tab-target="j2cPastePanel" aria-selected="false">Paste JSON</button>
+                <button type="button" class="tool-tab" data-tab-target="j2cSamplePanel" aria-selected="false">Sample Data</button>
+                <div id="j2cUploadPanel" class="tool-panel" data-tab-panel>
+                  <input id="j2cFileInput" type="file" accept=".json,application/json,text/json" hidden>
+                  <div id="j2cDropzone" class="dropzone">
+                    <p>Drop JSON here or click to choose file</p>
+                  </div>
+                </div>
+                <div id="j2cPastePanel" class="tool-panel" data-tab-panel hidden>
+                  <textarea id="j2cPasteInput" class="field" placeholder="Paste JSON content here"></textarea>
+                  <div class="tool-row">
+                    <button id="j2cRun" class="btn btn-primary" type="button">Convert to CSV</button>
+                  </div>
+                </div>
+                <div id="j2cSamplePanel" class="tool-panel" data-tab-panel hidden>
+                  <p class="section-intro">Load sample JSON to preview key-to-column conversion.</p>
+                  <div class="tool-row">
+                    <button id="j2cSample" class="btn btn-secondary" type="button">Load Sample JSON</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tool-row">
+                <button id="j2cCopy" class="btn btn-secondary" type="button">Copy CSV</button>
+                <button id="j2cDownload" class="btn btn-secondary" type="button">Download CSV</button>
+                <button id="j2cClear" class="btn btn-tertiary" type="button">Clear</button>
+              </div>
+              <p id="j2cStatus" class="tool-message">Add JSON input to generate CSV output.</p>
+            </div>
+
+            <div>
+              <div class="output-panel">
+                <textarea id="j2cOutput" readonly aria-label="CSV output"></textarea>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">Turn structured JSON into clean tabular data</h2>
+        <p class="section-intro">Keys become CSV headers and each object becomes a row. That makes the output easier to import into sheets, BI tools, CRMs, and bulk upload forms.</p>
+        <div class="pill-list">
+          <span class="pill">JSON to CSV converter</span>
+          <span class="pill">Object-to-row mapping</span>
+          <span class="pill">Spreadsheet-ready CSV</span>
+          <span class="pill">Export-friendly columns</span>
+        </div>
+      </section>
+
+      <section class="split">
+        <article class="card card-pad">
+          <h2 class="section-title" style="font-size: 1.4rem;">Prepare CSV for imports and downstream tools</h2>
+          <p class="section-intro">Use this page when teams need CSV instead of JSON. It is especially helpful for handoffs to operations, finance, marketing, and support workflows.</p>
+        </article>
+        <article class="card card-pad">
+          <h2 class="section-title" style="font-size: 1.4rem;">Review output in CSV Viewer Online</h2>
+          <p class="section-intro">After conversion, inspect headers and rows in <a href="/csv-viewer-online/">CSV Viewer Online</a>. If corrections are needed, continue in <a href="/csv-editor-online/">CSV Editor Online</a>.</p>
+        </article>
+      </section>
+
+      <section class="faq">
+        <h2 class="section-title">JSON to CSV FAQ</h2>
+        <details>
+          <summary>Can this converter handle both JSON arrays and single objects?</summary>
+          <p>Yes. Arrays become multiple CSV rows, and single objects are exported as one row with matching columns.</p>
+        </details>
+        <details>
+          <summary>What if objects use different keys?</summary>
+          <p>The converter builds a combined header set across records and leaves missing values blank where needed.</p>
+        </details>
+        <details>
+          <summary>How do I quality-check the converted file before sharing?</summary>
+          <p>Open the result in <a href="/csv-viewer-online/">CSV Viewer Online</a>, then use <a href="/csv-editor-online/">CSV Editor Online</a> if any rows need correction.</p>
+        </details>
+      </section>
+
+      <section>
+        <h2 class="section-title">Related core tools</h2>
+        <div class="links-list">
+          <a href="/csv-viewer-online/">CSV Viewer Online<span>Review the converted CSV before importing or sharing.</span></a>
+          <a href="/csv-editor-online/">CSV Editor Online<span>Fix post-conversion row issues and re-export.</span></a>
+          <a href="/csv-to-json/">CSV to JSON<span>Run the reverse workflow when source data starts in CSV.</span></a>
+          <a href="/tsv-viewer/">TSV Viewer<span>Inspect tab-delimited outputs from adjacent pipelines.</span></a>
+          <a href="/">CSV tools hub<span>Return to the full conversion workflow cluster.</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year></span> CSVViewerOnline</p>
+                  <nav class="footer-nav">
+        <a href="/csv-viewer-online/">CSV Viewer Online</a>
+        <a href="/csv-editor-online/">CSV Editor Online</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+        <a href="/excel-to-csv/">Excel to CSV</a>
+        <a href="/csv-cleaner/">CSV Cleaner</a>
+        <a href="/csv-formatter/">CSV Formatter</a>
+        <a href="/delimiter-converter/">Delimiter Converter</a>
+        <a href="/what-is-a-csv-file/">What Is a CSV File</a>
+        <a href="/how-to-open-csv-file/">How to Open CSV File</a>
+        <a href="/csv-vs-excel/">CSV vs Excel</a>
+        <a href="/how-to-edit-a-csv-file/">How to Edit a CSV File</a>
+        <a href="/how-to-convert-csv-to-json/">How to Convert CSV to JSON</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "JSON to CSV",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": "https://csvvieweronline.github.io/json-to-csv/",
+        "description": "Convert JSON arrays and objects into spreadsheet-ready CSV columns for imports and reporting."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can this converter handle both JSON arrays and single objects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Arrays become multiple CSV rows, and single objects are exported as one row with matching columns."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if objects use different keys?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The converter builds a combined header set across records and leaves missing values blank where needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I quality-check the converted file before sharing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open the result in CSV Viewer Online, then use CSV Editor Online if any rows need correction."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
+
+

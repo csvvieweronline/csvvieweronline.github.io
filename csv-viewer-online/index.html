@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSV Viewer Online - Open, Search and Sort CSV Files Fast</title>
+    <meta name="description" content="CSV Viewer Online helps you open, inspect, search, and sort CSV files fast with private browser-based processing.">
+  <link rel="canonical" href="https://csvvieweronline.github.io/csv-viewer-online/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CSV Viewer Online - Open, Search and Sort CSV Files Fast">
+    <meta property="og:description" content="CSV Viewer Online helps you open, inspect, search, and sort CSV files fast with private browser-based processing.">
+  <meta property="og:url" content="https://csvvieweronline.github.io/csv-viewer-online/">
+  <meta property="og:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script defer src="/assets/js/main.js"></script>
+  <script defer src="/assets/js/tools.js"></script>
+</head>
+<body data-tool="csv-viewer">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <span class="brand-badge">CV</span>
+        <span>CSVViewerOnline</span>
+      </a>
+      <nav class="site-nav" data-site-nav>
+        <a href="/">Home</a>
+        <a href="/csv-viewer-online/">CSV Viewer</a>
+        <a href="/csv-editor-online/">CSV Editor</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">T</button>
+        <button class="menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">M</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container fade-up">
+      <section class="hero">
+        <h1>CSV Viewer Online</h1>
+        <p>Use this online CSV viewer to inspect structure, verify records, and scan large datasets before making any edits. It is optimized for reading and analysis, not cell modification.</p>
+        <p class="trust-line">Private browser processing. Zero setup. Designed for fast inspection.</p>
+
+        <article class="tool-shell" aria-label="CSV viewer tool">
+          <div class="tool-shell-head">
+            <h2>Open CSV File Online and Inspect Every Row</h2>
+            <span class="privacy-pill">Local processing by default</span>
+          </div>
+          <div class="tool-body">
+            <div class="tool-tabs" data-tabset>
+              <button type="button" class="tool-tab" data-tab-target="viewerUploadPanel" aria-selected="true">Upload CSV</button>
+              <button type="button" class="tool-tab" data-tab-target="viewerPastePanel" aria-selected="false">Paste CSV</button>
+              <button type="button" class="tool-tab" data-tab-target="viewerSamplePanel" aria-selected="false">Sample Data</button>
+              <div id="viewerUploadPanel" class="tool-panel" data-tab-panel>
+                <input id="viewerFileInput" type="file" accept=".csv,text/csv" hidden>
+                <div id="viewerDropzone" class="dropzone">
+                  <p>Drop a CSV file here or click to choose a file</p>
+                </div>
+              </div>
+              <div id="viewerPastePanel" class="tool-panel" data-tab-panel hidden>
+                <textarea id="viewerPasteInput" class="field" placeholder="Paste CSV content here"></textarea>
+                <div class="tool-row">
+                  <button id="viewerRunPaste" class="btn btn-primary" type="button">Parse Pasted CSV</button>
+                </div>
+              </div>
+              <div id="viewerSamplePanel" class="tool-panel" data-tab-panel hidden>
+                <p class="section-intro">Load a sample dataset to test sorting, filtering, and sticky headers.</p>
+                <div class="tool-row">
+                  <button id="viewerSample" class="btn btn-secondary" type="button">Load Sample CSV</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="tool-row">
+              <button id="viewerDownload" class="btn btn-secondary" type="button">Export Current Table</button>
+              <button id="viewerClear" class="btn btn-tertiary" type="button">Clear</button>
+            </div>
+            <p id="viewerStatus" class="tool-message">Load a CSV file to begin inspection.</p>
+
+            <div class="table-controls">
+              <input id="viewerSearch" class="field" type="search" placeholder="Search rows" style="max-width: 360px;">
+              <span id="viewerMeta" class="table-meta">No rows loaded yet.</span>
+            </div>
+
+            <div id="viewerTable" class="table-wrap" role="region" aria-live="polite"></div>
+            <div class="tool-row" style="justify-content: flex-end;">
+              <button id="viewerPrev" class="btn btn-secondary" type="button">Previous</button>
+              <span id="viewerPage" class="table-meta" style="align-self: center;">Page 1 of 1</span>
+              <button id="viewerNext" class="btn btn-secondary" type="button">Next</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">Use CSV Viewer Online for validation, not editing</h2>
+        <p class="section-intro">This page is purpose-built for opening csv files online, validating structure, and spotting issues quickly. If you need to change values, move to <a href="/csv-editor-online/">CSV Editor Online</a> after review.</p>
+        <div class="pill-list">
+          <span class="pill">CSV viewer</span>
+          <span class="pill">CSV file viewer</span>
+          <span class="pill">Online csv viewer</span>
+          <span class="pill">Search and sort</span>
+          <span class="pill">Sticky headers</span>
+        </div>
+      </section>
+
+      <section class="split">
+        <article class="card card-pad">
+          <h2 class="section-title" style="font-size: 1.4rem;">How to open csv file online in under a minute</h2>
+          <p class="section-intro">Upload your file or paste raw CSV text, then scan columns with sticky headers. Sort by any field and search across rows to locate anomalies quickly.</p>
+        </article>
+        <article class="card card-pad">
+          <h2 class="section-title" style="font-size: 1.4rem;">Large CSV reading without browser lag</h2>
+          <p class="section-intro">The viewer uses paginated rendering to keep interactions fast. On very large datasets, it shows a responsive preview range so navigation stays smooth.</p>
+        </article>
+      </section>
+
+      <section class="faq">
+        <h2 class="section-title">CSV Viewer FAQ</h2>
+        <details>
+          <summary>Can I open csv file online without Excel or Google Sheets?</summary>
+          <p>Yes. Drop the file directly into this viewer and inspect rows instantly. You do not need spreadsheet software to review structure or values.</p>
+        </details>
+        <details>
+          <summary>What is the difference between this page and CSV Editor Online?</summary>
+          <p>This page is for reading and analysis. If you need to update cells, use <a href="/csv-editor-online/">CSV Editor Online</a>, which is optimized for in-table editing and re-export.</p>
+        </details>
+        <details>
+          <summary>Can I sort columns and search for specific values?</summary>
+          <p>Yes. Click any column header to sort, then use the search box to filter matching rows across the dataset.</p>
+        </details>
+      </section>
+
+      <section>
+        <h2 class="section-title">Next steps after viewing</h2>
+        <div class="links-list">
+          <a href="/csv-editor-online/">CSV Editor Online<span>Fix incorrect values or normalize columns after inspection.</span></a>
+          <a href="/csv-to-json/">CSV to JSON<span>Transform validated table data into API-friendly JSON objects.</span></a>
+          <a href="/json-to-csv/">JSON to CSV<span>Round-trip JSON data back into spreadsheet-ready CSV.</span></a>
+          <a href="/tsv-viewer/">TSV Viewer<span>Inspect tab-delimited exports with the same table workflow.</span></a>
+          <a href="/">CSV tools hub<span>Return to homepage and follow the viewer-first workflow.</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year></span> CSVViewerOnline</p>
+                  <nav class="footer-nav">
+        <a href="/csv-viewer-online/">CSV Viewer Online</a>
+        <a href="/csv-editor-online/">CSV Editor Online</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+        <a href="/excel-to-csv/">Excel to CSV</a>
+        <a href="/csv-cleaner/">CSV Cleaner</a>
+        <a href="/csv-formatter/">CSV Formatter</a>
+        <a href="/delimiter-converter/">Delimiter Converter</a>
+        <a href="/what-is-a-csv-file/">What Is a CSV File</a>
+        <a href="/how-to-open-csv-file/">How to Open CSV File</a>
+        <a href="/csv-vs-excel/">CSV vs Excel</a>
+        <a href="/how-to-edit-a-csv-file/">How to Edit a CSV File</a>
+        <a href="/how-to-convert-csv-to-json/">How to Convert CSV to JSON</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "CSV Viewer Online",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": "https://csvvieweronline.github.io/csv-viewer-online/",
+        "description": "Open and view CSV files online with search, sorting, sticky headers, and fast browser-based rendering."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I open csv file online without Excel or Google Sheets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can drop the file directly into this viewer and inspect rows immediately without spreadsheet software."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between this page and CSV Editor Online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This page is for reading and analysis. CSV Editor Online is the page for changing cell values and exporting an updated file."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I sort columns and search for specific values?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can sort by any column and filter rows with the built-in search field."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
+
+
+

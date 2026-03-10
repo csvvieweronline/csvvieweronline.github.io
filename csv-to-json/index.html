@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSV to JSON - Convert CSV Rows into Structured JSON</title>
+    <meta name="description" content="CSV to JSON converts tabular CSV rows into structured JSON objects for API, analytics, and developer workflows in your browser.">
+  <link rel="canonical" href="https://csvvieweronline.github.io/csv-to-json/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CSV to JSON - Convert CSV Rows into Structured JSON">
+    <meta property="og:description" content="CSV to JSON converts tabular CSV rows into structured JSON objects for API, analytics, and developer workflows in your browser.">
+  <meta property="og:url" content="https://csvvieweronline.github.io/csv-to-json/">
+  <meta property="og:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script defer src="/assets/js/main.js"></script>
+  <script defer src="/assets/js/tools.js"></script>
+</head>
+<body data-tool="csv-to-json">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <span class="brand-badge">CV</span>
+        <span>CSVViewerOnline</span>
+      </a>
+      <nav class="site-nav" data-site-nav>
+        <a href="/">Home</a>
+        <a href="/csv-viewer-online/">CSV Viewer</a>
+        <a href="/csv-editor-online/">CSV Editor</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">T</button>
+        <button class="menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">M</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container fade-up">
+      <section class="hero">
+        <h1>CSV to JSON</h1>
+        <p>Transform tabular CSV into structured JSON objects for APIs, scripts, and data pipelines. This page is focused on format conversion, not editing cell values.</p>
+        <p class="trust-line">Upload or paste CSV. Copy or download JSON output in seconds.</p>
+
+        <article class="tool-shell" aria-label="CSV to JSON converter">
+          <div class="tool-shell-head">
+            <h2>Convert CSV to JSON in your browser</h2>
+            <span class="privacy-pill">No signup needed</span>
+          </div>
+          <div class="tool-body split">
+            <div>
+              <div class="tool-tabs" data-tabset>
+                <button type="button" class="tool-tab" data-tab-target="c2jUploadPanel" aria-selected="true">Upload CSV</button>
+                <button type="button" class="tool-tab" data-tab-target="c2jPastePanel" aria-selected="false">Paste CSV</button>
+                <button type="button" class="tool-tab" data-tab-target="c2jSamplePanel" aria-selected="false">Sample Data</button>
+                <div id="c2jUploadPanel" class="tool-panel" data-tab-panel>
+                  <input id="c2jFileInput" type="file" accept=".csv,text/csv" hidden>
+                  <div id="c2jDropzone" class="dropzone">
+                    <p>Drop CSV here or click to choose file</p>
+                  </div>
+                </div>
+                <div id="c2jPastePanel" class="tool-panel" data-tab-panel hidden>
+                  <textarea id="c2jPasteInput" class="field" placeholder="Paste CSV content here"></textarea>
+                  <div class="tool-row">
+                    <button id="c2jRun" class="btn btn-primary" type="button">Convert to JSON</button>
+                  </div>
+                </div>
+                <div id="c2jSamplePanel" class="tool-panel" data-tab-panel hidden>
+                  <p class="section-intro">Load sample CSV to preview row-to-object conversion.</p>
+                  <div class="tool-row">
+                    <button id="c2jSample" class="btn btn-secondary" type="button">Load Sample CSV</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tool-row">
+                <button id="c2jCopy" class="btn btn-secondary" type="button">Copy JSON</button>
+                <button id="c2jDownload" class="btn btn-secondary" type="button">Download JSON</button>
+                <button id="c2jClear" class="btn btn-tertiary" type="button">Clear</button>
+              </div>
+              <p id="c2jStatus" class="tool-message">Add CSV input to generate JSON output.</p>
+            </div>
+
+            <div>
+              <div class="output-panel">
+                <pre id="c2jOutput" aria-live="polite"></pre>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">Turn rows into structured JSON objects</h2>
+        <p class="section-intro">Headers become keys and each row becomes a JSON object. That makes this converter useful for developer handoffs, API payload prep, and automation input.</p>
+        <div class="pill-list">
+          <span class="pill">CSV to JSON converter</span>
+          <span class="pill">Row-to-object mapping</span>
+          <span class="pill">Developer workflows</span>
+          <span class="pill">Copy or download JSON</span>
+        </div>
+      </section>
+
+      <section class="split">
+        <article class="card card-pad">
+          <h2 class="section-title" style="font-size: 1.4rem;">Convert uploaded files or pasted CSV instantly</h2>
+          <p class="section-intro">Use file upload for full exports or paste for quick checks. Either way, you get formatted JSON output ready for direct reuse.</p>
+        </article>
+        <article class="card card-pad">
+          <h2 class="section-title" style="font-size: 1.4rem;">Validate in CSV Viewer Online before converting</h2>
+          <p class="section-intro">Before conversion, inspect headers and row quality in <a href="/csv-viewer-online/">CSV Viewer Online</a>. Need the reverse workflow later? Use <a href="/json-to-csv/">JSON to CSV</a>.</p>
+        </article>
+      </section>
+
+      <section class="faq">
+        <h2 class="section-title">CSV to JSON FAQ</h2>
+        <details>
+          <summary>What does this tool use for JSON field names?</summary>
+          <p>It uses the first CSV row as field names. Every remaining row is converted into an object with those same keys.</p>
+        </details>
+        <details>
+          <summary>Can I convert pasted CSV text from a spreadsheet export?</summary>
+          <p>Yes. Paste CSV content directly, run conversion, and copy the structured JSON output immediately.</p>
+        </details>
+        <details>
+          <summary>Should I clean the CSV before converting?</summary>
+          <p>If needed, yes. Review in <a href="/csv-viewer-online/">CSV Viewer Online</a> first, or fix records in <a href="/csv-editor-online/">CSV Editor Online</a>, then convert here.</p>
+        </details>
+      </section>
+
+      <section>
+        <h2 class="section-title">Related core tools</h2>
+        <div class="links-list">
+          <a href="/csv-viewer-online/">CSV Viewer Online<span>Validate rows and headers before transformation.</span></a>
+          <a href="/csv-editor-online/">CSV Editor Online<span>Correct records before generating JSON.</span></a>
+          <a href="/json-to-csv/">JSON to CSV<span>Run the reverse conversion for spreadsheet workflows.</span></a>
+          <a href="/tsv-viewer/">TSV Viewer<span>Inspect tab-delimited files from adjacent systems.</span></a>
+          <a href="/">CSV tools hub<span>Return to the main workflow cluster.</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year></span> CSVViewerOnline</p>
+                  <nav class="footer-nav">
+        <a href="/csv-viewer-online/">CSV Viewer Online</a>
+        <a href="/csv-editor-online/">CSV Editor Online</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+        <a href="/excel-to-csv/">Excel to CSV</a>
+        <a href="/csv-cleaner/">CSV Cleaner</a>
+        <a href="/csv-formatter/">CSV Formatter</a>
+        <a href="/delimiter-converter/">Delimiter Converter</a>
+        <a href="/what-is-a-csv-file/">What Is a CSV File</a>
+        <a href="/how-to-open-csv-file/">How to Open CSV File</a>
+        <a href="/csv-vs-excel/">CSV vs Excel</a>
+        <a href="/how-to-edit-a-csv-file/">How to Edit a CSV File</a>
+        <a href="/how-to-convert-csv-to-json/">How to Convert CSV to JSON</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "CSV to JSON",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": "https://csvvieweronline.github.io/csv-to-json/",
+        "description": "Convert CSV rows into structured JSON objects for developer and API workflows."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does this tool use for JSON field names?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It uses the first CSV row as field names and converts each remaining row into an object with those keys."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I convert pasted CSV text from a spreadsheet export?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Paste CSV content directly, run conversion, and copy the structured JSON output immediately."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I clean the CSV before converting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes when needed. Review in CSV Viewer Online or clean records in CSV Editor Online before conversion."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSV Editor Online - Edit CSV Files, Correct Rows and Export</title>
+    <meta name="description" content="CSV Editor Online lets you update cell values, correct records, and export a clean CSV fast in your browser.">
+  <link rel="canonical" href="https://csvvieweronline.github.io/csv-editor-online/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CSV Editor Online - Edit CSV Files, Correct Rows and Export">
+    <meta property="og:description" content="CSV Editor Online lets you update cell values, correct records, and export a clean CSV fast in your browser.">
+  <meta property="og:url" content="https://csvvieweronline.github.io/csv-editor-online/">
+  <meta property="og:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script defer src="/assets/js/main.js"></script>
+  <script defer src="/assets/js/tools.js"></script>
+</head>
+<body data-tool="csv-editor">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <span class="brand-badge">CV</span>
+        <span>CSVViewerOnline</span>
+      </a>
+      <nav class="site-nav" data-site-nav>
+        <a href="/">Home</a>
+        <a href="/csv-viewer-online/">CSV Viewer</a>
+        <a href="/csv-editor-online/">CSV Editor</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">T</button>
+        <button class="menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">M</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container fade-up">
+      <section class="hero">
+        <h1>CSV Editor Online</h1>
+        <p>Change values directly in-table, correct bad records, and save an updated file fast. This page is built for modification work after you have already inspected the dataset.</p>
+        <p class="trust-line">Focused on editing, correcting, updating, and exporting CSV data.</p>
+
+        <article class="tool-shell" aria-label="CSV editor tool">
+          <div class="tool-shell-head">
+            <h2>Edit CSV files online without spreadsheet software</h2>
+            <span class="privacy-pill">Processed in your browser</span>
+          </div>
+          <div class="tool-body">
+            <div class="tool-tabs" data-tabset>
+              <button type="button" class="tool-tab" data-tab-target="editorUploadPanel" aria-selected="true">Upload CSV</button>
+              <button type="button" class="tool-tab" data-tab-target="editorPastePanel" aria-selected="false">Paste CSV</button>
+              <button type="button" class="tool-tab" data-tab-target="editorSamplePanel" aria-selected="false">Sample Data</button>
+              <div id="editorUploadPanel" class="tool-panel" data-tab-panel>
+                <input id="editorFileInput" type="file" accept=".csv,text/csv" hidden>
+                <div id="editorDropzone" class="dropzone">
+                  <p>Drop your CSV file here or click to choose a file</p>
+                </div>
+              </div>
+              <div id="editorPastePanel" class="tool-panel" data-tab-panel hidden>
+                <textarea id="editorPasteInput" class="field" placeholder="Paste CSV content here"></textarea>
+                <div class="tool-row">
+                  <button id="editorRunPaste" class="btn btn-primary" type="button">Load into Editor</button>
+                </div>
+              </div>
+              <div id="editorSamplePanel" class="tool-panel" data-tab-panel hidden>
+                <p class="section-intro">Load sample data to test updates, corrections, and export flow.</p>
+                <div class="tool-row">
+                  <button id="editorSample" class="btn btn-secondary" type="button">Load Sample CSV</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="tool-row">
+              <button id="editorDownload" class="btn btn-secondary" type="button">Export Edited CSV</button>
+              <button id="editorClear" class="btn btn-tertiary" type="button">Clear</button>
+            </div>
+            <p id="editorStatus" class="tool-message">Load a CSV file and click any cell to edit.</p>
+
+            <div class="table-controls">
+              <input id="editorSearch" class="field" type="search" placeholder="Search rows" style="max-width: 360px;">
+              <span id="editorMeta" class="table-meta">No rows loaded yet.</span>
+            </div>
+
+            <div id="editorTable" class="table-wrap" role="region" aria-live="polite"></div>
+            <div class="tool-row" style="justify-content: flex-end;">
+              <button id="editorPrev" class="btn btn-secondary" type="button">Previous</button>
+              <span id="editorPage" class="table-meta" style="align-self: center;">Page 1 of 1</span>
+              <button id="editorNext" class="btn btn-secondary" type="button">Next</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">Correct rows and export a clean CSV</h2>
+        <p class="section-intro">Use this editor to fix formatting issues, update columns, and correct records before sharing or importing data. For read-only validation first, open <a href="/csv-viewer-online/">CSV Viewer Online</a>.</p>
+        <div class="pill-list">
+          <span class="pill">CSV editor</span>
+          <span class="pill">Edit csv online</span>
+          <span class="pill">Correct records</span>
+          <span class="pill">Update columns</span>
+          <span class="pill">Export cleaned CSV</span>
+        </div>
+      </section>
+
+      <section class="split">
+        <article class="card card-pad">
+          <h2 class="section-title" style="font-size: 1.4rem;">When to use CSV Editor Online instead of CSV Viewer Online</h2>
+          <p class="section-intro">Use <a href="/csv-viewer-online/">CSV Viewer Online</a> when you only need to inspect, search, and sort. Use this page when values must be changed and saved.</p>
+        </article>
+        <article class="card card-pad">
+          <h2 class="section-title" style="font-size: 1.4rem;">Editing workflow for updates that ship quickly</h2>
+          <p class="section-intro">Load file, locate rows with search, update cells, then export. If the next step is API delivery, continue to <a href="/csv-to-json/">CSV to JSON</a>.</p>
+        </article>
+      </section>
+
+      <section class="faq">
+        <h2 class="section-title">CSV Editor FAQ</h2>
+        <details>
+          <summary>Can I edit CSV files online without Excel or Google Sheets?</summary>
+          <p>Yes. You can edit cell values directly in this browser-based table and export the updated CSV immediately.</p>
+        </details>
+        <details>
+          <summary>Should I start in CSV Viewer Online before editing?</summary>
+          <p>Usually yes. Start with <a href="/csv-viewer-online/">CSV Viewer Online</a> to validate structure, then switch here when you need to modify rows.</p>
+        </details>
+        <details>
+          <summary>Can I fix formatting issues and column values in one pass?</summary>
+          <p>Yes. You can update fields, correct inconsistencies, and download a cleaned CSV file after your edits.</p>
+        </details>
+      </section>
+
+      <section>
+        <h2 class="section-title">Related core tools</h2>
+        <div class="links-list">
+          <a href="/csv-viewer-online/">CSV Viewer Online<span>Validate the file before and after edits.</span></a>
+          <a href="/csv-to-json/">CSV to JSON<span>Transform corrected rows into structured JSON objects.</span></a>
+          <a href="/json-to-csv/">JSON to CSV<span>Convert JSON exports back into editable CSV format.</span></a>
+          <a href="/tsv-viewer/">TSV Viewer<span>Inspect tab-delimited exports from adjacent systems.</span></a>
+          <a href="/">CSV tools hub<span>Return to the homepage workflow cluster.</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year></span> CSVViewerOnline</p>
+                  <nav class="footer-nav">
+        <a href="/csv-viewer-online/">CSV Viewer Online</a>
+        <a href="/csv-editor-online/">CSV Editor Online</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+        <a href="/excel-to-csv/">Excel to CSV</a>
+        <a href="/csv-cleaner/">CSV Cleaner</a>
+        <a href="/csv-formatter/">CSV Formatter</a>
+        <a href="/delimiter-converter/">Delimiter Converter</a>
+        <a href="/what-is-a-csv-file/">What Is a CSV File</a>
+        <a href="/how-to-open-csv-file/">How to Open CSV File</a>
+        <a href="/csv-vs-excel/">CSV vs Excel</a>
+        <a href="/how-to-edit-a-csv-file/">How to Edit a CSV File</a>
+        <a href="/how-to-convert-csv-to-json/">How to Convert CSV to JSON</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "CSV Editor Online",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": "https://csvvieweronline.github.io/csv-editor-online/",
+        "description": "Edit CSV files online, correct rows and columns, and export a clean CSV quickly."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I edit CSV files online without Excel or Google Sheets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can edit cell values directly in this browser-based table and export the updated CSV immediately."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I start in CSV Viewer Online before editing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Start in CSV Viewer Online for inspection, then switch to this editor when you need to modify rows."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I fix formatting issues and column values in one pass?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can correct inconsistencies, update columns, and download a cleaned CSV file in one workflow."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
+
+

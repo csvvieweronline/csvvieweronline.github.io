@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delimiter Converter - Convert CSV, TSV, Semicolon and Pipe Data</title>
+    <meta name="description" content="Delimiter Converter switches comma, tab, semicolon, and pipe-delimited text formats for import compatibility and clean data exchange.">
+  <link rel="canonical" href="https://csvvieweronline.github.io/delimiter-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Delimiter Converter - Convert CSV, TSV, Semicolon and Pipe Data">
+    <meta property="og:description" content="Delimiter Converter switches comma, tab, semicolon, and pipe-delimited text formats for import compatibility and clean data exchange.">
+  <meta property="og:url" content="https://csvvieweronline.github.io/delimiter-converter/">
+  <meta property="og:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://csvvieweronline.github.io/assets/img/og-image.svg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script defer src="/assets/js/main.js"></script>
+  <script defer src="/assets/js/tools-v2.js"></script>
+</head>
+<body data-tool="delimiter-converter">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <span class="brand-badge">CV</span>
+        <span>CSVViewerOnline</span>
+      </a>
+      <nav class="site-nav" data-site-nav>
+        <a href="/">Home</a>
+        <a href="/csv-viewer-online/">CSV Viewer</a>
+        <a href="/csv-editor-online/">CSV Editor</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle theme">T</button>
+        <button class="menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-label="Toggle navigation">M</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container fade-up">
+      <section class="hero">
+        <h1>Delimiter Converter</h1>
+        <p>Convert delimited text between comma, tab, semicolon, and pipe formats. This page changes delimiters; it is different from TSV Viewer, which focuses on inspection only.</p>
+        <p class="trust-line">Convert format quickly while preserving tabular structure.</p>
+
+        <article class="tool-shell" aria-label="Delimiter converter tool">
+          <div class="tool-shell-head">
+            <h2>Convert delimiters above the fold</h2>
+            <span class="privacy-pill">Comma, tab, semicolon, pipe</span>
+          </div>
+          <div class="tool-body split">
+            <div>
+              <div class="tool-tabs" data-tabset>
+                <button type="button" class="tool-tab" data-tab-target="dcvUploadPanel" aria-selected="true">Upload Data</button>
+                <button type="button" class="tool-tab" data-tab-target="dcvPastePanel" aria-selected="false">Paste Data</button>
+                <button type="button" class="tool-tab" data-tab-target="dcvSamplePanel" aria-selected="false">Sample Data</button>
+                <div id="dcvUploadPanel" class="tool-panel" data-tab-panel>
+                  <input id="dcvFileInput" type="file" accept=".csv,.tsv,text/plain,text/csv,text/tab-separated-values" hidden>
+                  <div id="dcvDropzone" class="dropzone">
+                    <p>Drop a delimited file here or click to choose one</p>
+                  </div>
+                </div>
+                <div id="dcvPastePanel" class="tool-panel" data-tab-panel hidden>
+                  <textarea id="dcvPasteInput" class="field" placeholder="Paste delimited data here"></textarea>
+                  <div class="tool-row">
+                    <button id="dcvRun" class="btn btn-primary" type="button">Convert Delimiter</button>
+                  </div>
+                </div>
+                <div id="dcvSamplePanel" class="tool-panel" data-tab-panel hidden>
+                  <p class="section-intro">Load sample tab-separated data and convert to CSV.</p>
+                  <div class="tool-row">
+                    <button id="dcvSample" class="btn btn-secondary" type="button">Load Sample</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-pad" style="margin-top: 0.6rem;">
+                <h3 style="margin-top: 0;">Conversion settings</h3>
+                <label style="display:block; margin-top: 0.4rem;">Source delimiter
+                  <select id="dcvSource" class="field" style="margin-top: 0.35rem;">
+                    <option value="auto">Auto detect</option>
+                    <option value="comma">Comma</option>
+                    <option value="tab">Tab</option>
+                    <option value="semicolon">Semicolon</option>
+                    <option value="pipe">Pipe</option>
+                  </select>
+                </label>
+                <label style="display:block; margin-top: 0.6rem;">Target delimiter
+                  <select id="dcvTarget" class="field" style="margin-top: 0.35rem;">
+                    <option value="comma">Comma</option>
+                    <option value="tab">Tab</option>
+                    <option value="semicolon">Semicolon</option>
+                    <option value="pipe">Pipe</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="tool-row">
+                <button id="dcvCopy" class="btn btn-secondary" type="button">Copy Converted Output</button>
+                <button id="dcvDownload" class="btn btn-secondary" type="button">Download Output</button>
+                <button id="dcvClear" class="btn btn-tertiary" type="button">Clear</button>
+              </div>
+              <p id="dcvStatus" class="tool-message">Load input and select source/target delimiters.</p>
+            </div>
+
+            <div>
+              <div class="output-panel">
+                <textarea id="dcvOutput" readonly aria-label="Converted delimiter output"></textarea>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">Converter vs Viewer: know the difference</h2>
+        <p class="section-intro">Use Delimiter Converter to change file format. Use <a href="/tsv-viewer/">TSV Viewer</a> when you only need to inspect tab-delimited data without altering delimiters.</p>
+        <div class="pill-list">
+          <span class="pill">Delimiter converter</span>
+          <span class="pill">CSV to TSV</span>
+          <span class="pill">TSV to CSV</span>
+          <span class="pill">Semicolon and pipe support</span>
+        </div>
+      </section>
+
+      <section class="faq">
+        <h2 class="section-title">Delimiter Converter FAQ</h2>
+        <details>
+          <summary>Which delimiters are supported?</summary>
+          <p>You can convert between comma, tab, semicolon, and pipe delimiters.</p>
+        </details>
+        <details>
+          <summary>Is this the same as TSV Viewer?</summary>
+          <p>No. This tool changes delimiter format. <a href="/tsv-viewer/">TSV Viewer</a> is for reading tab-delimited files without converting them.</p>
+        </details>
+        <details>
+          <summary>What should I do after converting delimiters?</summary>
+          <p>Inspect output in <a href="/csv-viewer-online/">CSV Viewer Online</a>, then use <a href="/csv-formatter/">CSV Formatter</a> if you want more consistent structure.</p>
+        </details>
+      </section>
+
+      <section>
+        <h2 class="section-title">Related tools</h2>
+        <div class="links-list">
+          <a href="/tsv-viewer/">TSV Viewer<span>Inspect tab-delimited files without changing format.</span></a>
+          <a href="/csv-viewer-online/">CSV Viewer Online<span>Validate converted output with search and sorting.</span></a>
+          <a href="/csv-formatter/">CSV Formatter<span>Standardize structure after delimiter conversion.</span></a>
+          <a href="/csv-cleaner/">CSV Cleaner<span>Remove noise before or after conversion.</span></a>
+          <a href="/">Back to CSV tools hub<span>Return to homepage for complete workflows.</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year></span> CSVViewerOnline</p>
+                  <nav class="footer-nav">
+        <a href="/csv-viewer-online/">CSV Viewer Online</a>
+        <a href="/csv-editor-online/">CSV Editor Online</a>
+        <a href="/csv-to-json/">CSV to JSON</a>
+        <a href="/json-to-csv/">JSON to CSV</a>
+        <a href="/tsv-viewer/">TSV Viewer</a>
+        <a href="/excel-to-csv/">Excel to CSV</a>
+        <a href="/csv-cleaner/">CSV Cleaner</a>
+        <a href="/csv-formatter/">CSV Formatter</a>
+        <a href="/delimiter-converter/">Delimiter Converter</a>
+        <a href="/what-is-a-csv-file/">What Is a CSV File</a>
+        <a href="/how-to-open-csv-file/">How to Open CSV File</a>
+        <a href="/csv-vs-excel/">CSV vs Excel</a>
+        <a href="/how-to-edit-a-csv-file/">How to Edit a CSV File</a>
+        <a href="/how-to-convert-csv-to-json/">How to Convert CSV to JSON</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Delimiter Converter",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": "https://csvvieweronline.github.io/delimiter-converter/",
+        "description": "Convert delimited data between comma, tab, semicolon, and pipe formats for compatibility workflows."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which delimiters are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can convert between comma, tab, semicolon, and pipe delimiters."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this the same as TSV Viewer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Delimiter Converter changes format, while TSV Viewer is for tab-delimited inspection only."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I do after converting delimiters?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Inspect output in CSV Viewer Online, then use CSV Formatter if you want standardized structure."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
+
+
